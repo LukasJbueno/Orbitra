@@ -1,0 +1,73 @@
+.event-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.event-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.event-card__color-bar {
+  width: 4px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.event-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.event-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+
+.event-card__name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.event-card__date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.event-card__description {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.event-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.event-card__reminder {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.event-card__reminder select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 0.8rem;
+}

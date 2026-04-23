@@ -1,0 +1,44 @@
+.calendar-page {
+  padding: 2rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.calendar-page h1 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.calendar-page__year-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.calendar-page__year-nav h2 {
+  font-size: 1.25rem;
+  min-width: 60px;
+  text-align: center;
+}
+
+.calendar-months-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .calendar-page {
+    padding: 1rem;
+  }
+  .calendar-months-grid {
+    grid-template-columns: 1fr;
+  }
+}

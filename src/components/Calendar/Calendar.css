@@ -1,0 +1,120 @@
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 2rem;
+}
+
+.calendar-grid__header {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.calendar-grid__day {
+  min-height: 80px;
+  padding: 0.35rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  position: relative;
+  cursor: default;
+}
+
+.calendar-grid__day--empty {
+  background: transparent;
+  border-color: transparent;
+}
+
+.calendar-grid__day--today {
+  border-color: var(--color-primary);
+}
+
+.calendar-grid__day-number {
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.calendar-grid__day--today .calendar-grid__day-number {
+  color: var(--color-primary);
+}
+
+.calendar-grid__dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 1px;
+  cursor: pointer;
+}
+
+.calendar-grid__event-name {
+  font-size: 0.65rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 1px 3px;
+  border-radius: 2px;
+  margin-bottom: 1px;
+  cursor: pointer;
+}
+
+.calendar-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.calendar-controls__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.calendar-controls__nav h2 {
+  font-size: 1.25rem;
+  min-width: 200px;
+  text-align: center;
+}
+
+.calendar-controls__view {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.calendar-controls__view button {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.2s;
+}
+
+.calendar-controls__view button.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .calendar-grid__day {
+    min-height: 50px;
+    padding: 0.2rem;
+  }
+  .calendar-grid__event-name {
+    display: none;
+  }
+}

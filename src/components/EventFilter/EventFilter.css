@@ -1,0 +1,30 @@
+.event-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.event-filter__chip {
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+
+.event-filter__chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+.event-filter__chip--active {
+  border-color: var(--color-primary);
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--color-primary);
+}

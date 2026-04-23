@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/9fc71167-b230-44b6-91fe-15435a260c9a/resourceGroups/appsvc_windows_eastus/providers/Microsoft.Web/sites/orbitraapp",
+    "appService.deploySubpath": "dist"
+}
