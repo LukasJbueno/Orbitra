@@ -113,20 +113,24 @@ const MOCK_EVENTS = [
   },
 ];
 
-const MOCK_USERS = [
-  {
-    id: 1,
-    name: 'Demo User',
-    email: 'demo@orbitra.com',
-    password: 'demo1234',
-  },
-];
+// En desarrollo Vite proxy redirige '/api' → localhost:3001
+// En producción se usa VITE_API_URL apuntando a la EC2
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 let subscriptions = [];
-let nextUserId = 2;
 
 function delay(ms = 400) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function apiFetch(path, options = {}) {
+  const res = await fetch(`${API_BASE}${path}`, {
+    headers: { 'Content-Type': 'application/json', ...options.headers },
+    ...options,
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || 'Error en la petición');
+  return data;
 }
 
 export async function getEvents() {
@@ -142,23 +146,17 @@ export async function getEventById(id) {
 }
 
 export async function login(email, password) {
-  await delay(600);
-  const user = MOCK_USERS.find(
-    (u) => u.email === email && u.password === password,
-  );
-  if (!user) throw new Error('Credenciales inválidas');
-  const { password: _, ...safeUser } = user;
-  return { token: 'mock-jwt-token', user: safeUser };
+  return apiFetch('/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+  });
 }
 
 export async function register(name, email, password) {
-  await delay(600);
-  const exists = MOCK_USERS.find((u) => u.email === email);
-  if (exists) throw new Error('El correo ya está registrado');
-  const newUser = { id: nextUserId++, name, email, password };
-  MOCK_USERS.push(newUser);
-  const { password: _, ...safeUser } = newUser;
-  return { token: 'mock-jwt-token', user: safeUser };
+  return apiFetch('/auth/register', {
+    method: 'POST',
+    body: JSON.stringify({ name, email, password }),
+  });
 }
 
 export async function subscribeToEvent(userId, eventId, reminder = null) {
